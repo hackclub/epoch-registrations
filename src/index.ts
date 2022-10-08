@@ -12,7 +12,7 @@ const app = new App({
   socketMode: true,
 });
 
-var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base("appcOBkMEqOurse8O");
+var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE);
 
 app.event("message", async ({ client, message }) => {
   if (
