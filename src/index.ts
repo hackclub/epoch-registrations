@@ -108,8 +108,8 @@ app.view("register-view", async ({ ack, body, view, client }) => {
             "Dietary Restrictions":
               view.state.values["dietary-restrictions"]["dietary-restrictions"].value,
             "Vaccine Status":
-              view.state.values["vaccine-status"]["vaccine-status"].selected_options?.[0].value ===
-              "vaccine-status",
+              view.state.values["vaccine-status"]["vaccine-status"]?.selected_options?.[0]?.value ===
+              "vaccine-status" || false,
           },
         },
       ],
