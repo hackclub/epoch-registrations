@@ -47,24 +47,29 @@ app.event("message", async ({ client, message }) => {
         },
       ],
     });
-  } else if (message.channel === "C044SRZR8MB") {
-    const { user } = await client.users.info({ user: (message as any).user });
-    base("Registrations")
-      .select({
-        filterByFormula: `{Email} = "${user.profile.email}"`,
-      })
-      .eachPage((records, fetchNextPage) => {
-        records.forEach((record) => {
-          base("Registrations").update(record.id, { Verified: true }, function (err, record) {
-            if (err) {
-              console.error(err);
-              return;
-            }
-            console.log(record.get("Verified"));
+  } else if (message.channel === "C0P5NE354") {
+    try {
+      const { user } = await client.users.info({ user: (message as any).user });
+      base("Registrations")
+        .select({
+          filterByFormula: `{Email} = "${user.profile.email}"`,
+        })
+        .eachPage((records, fetchNextPage) => {
+          console.log(records.length);
+          records.forEach((record) => {
+            base("Registrations").update(record.id, { Verified: true }, function (err, record) {
+              if (err) {
+                console.error(err);
+                return;
+              }
+              console.log(record.get("Verified"));
+            });
           });
+          fetchNextPage();
         });
-        fetchNextPage();
-      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 });
 
