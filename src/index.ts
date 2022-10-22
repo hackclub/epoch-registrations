@@ -47,6 +47,24 @@ app.event("message", async ({ client, message }) => {
         },
       ],
     });
+  } else if (message.channel === "C044SRZR8MB") {
+    const { user } = await client.users.info({ user: (message as any).user });
+    base("Registrations")
+      .select({
+        filterByFormula: `{Email} = "${user.profile.email}"`,
+      })
+      .eachPage((records, fetchNextPage) => {
+        records.forEach((record) => {
+          base("Registrations").update(record.id, { Verified: true }, function (err, record) {
+            if (err) {
+              console.error(err);
+              return;
+            }
+            console.log(record.get("Verified"));
+          });
+        });
+        fetchNextPage();
+      });
   }
 });
 
@@ -105,11 +123,12 @@ app.view("register-view", async ({ ack, body, view, client }) => {
             "Tee Size": view.state.values["tee-size"]["tee-size"].selected_option.value,
             Skill: view.state.values.skill["skill"].selected_option.value,
             Why: view.state.values.why["why"].value,
+            Verified: true,
             "Dietary Restrictions":
               view.state.values["dietary-restrictions"]["dietary-restrictions"].value,
             "Vaccine Status":
-              view.state.values["vaccine-status"]["vaccine-status"]?.selected_options?.[0]?.value ===
-              "vaccine-status" || false,
+              view.state.values["vaccine-status"]["vaccine-status"]?.selected_options?.[0]
+                ?.value === "vaccine-status" || false,
           },
         },
       ],
