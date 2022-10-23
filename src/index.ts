@@ -17,7 +17,7 @@ var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.e
 app.event("message", async ({ client, message }) => {
   if (
     (message as any).text?.toLowerCase().includes("register") &&
-    message.channel === "C044SRZR8MB"
+    message.channel === "C0459UZNCDV"
   ) {
     await client.chat.postMessage({
       thread_ts: message.ts,
@@ -47,7 +47,7 @@ app.event("message", async ({ client, message }) => {
         },
       ],
     });
-  } else if (message.channel === "C0P5NE354") {
+  } else if (message.channel === "C044SRZR8MB") {
     try {
       const { user } = await client.users.info({ user: (message as any).user });
       base("Registrations")
