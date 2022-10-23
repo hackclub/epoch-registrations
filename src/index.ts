@@ -51,9 +51,7 @@ app.event("message", async ({ client, message }) => {
     try {
       const { user } = await client.users.info({ user: (message as any).user });
       base("Registrations")
-        .select({
-          filterByFormula: `{Email} = "${user.profile.email}"`,
-        })
+        .select({ filterByFormula: `{Email} = "${user.profile.email}"` })
         .eachPage((records, fetchNextPage) => {
           console.log(records.length);
           records.forEach((record) => {
