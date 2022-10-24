@@ -12,7 +12,7 @@ const app = new App({
   socketMode: true,
 });
 
-var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE);
+var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base("appkI9bYnFceQwtx4");
 
 app.event("message", async ({ client, message }) => {
   if (
@@ -123,13 +123,13 @@ app.view("register-view", async ({ ack, body, view, client }) => {
             Email: view.state.values.email["email"].value,
             Pronouns: view.state.values.pronouns["pronouns"].value,
             Birthday: view.state.values.birthday["birthday"].selected_date,
-            "Tee Size": view.state.values["tee-size"]["tee-size"].selected_option.value,
-            Skill: view.state.values.skill["skill"].selected_option.value,
-            Why: view.state.values.why["why"].value,
+            Shirt: view.state.values["tee-size"]["tee-size"].selected_option.value,
+            "Skill Level": view.state.values.skill["skill"].selected_option.value,
+            "Stipend-Q1 (Meaning)": view.state.values.why["why"].value,
             Verified: true,
             "Dietary Restrictions":
               view.state.values["dietary-restrictions"]["dietary-restrictions"].value,
-            "Vaccine Status":
+            "Vaccinated":
               view.state.values["vaccine-status"]["vaccine-status"]?.selected_options?.[0]
                 ?.value === "vaccine-status" || false,
           },
