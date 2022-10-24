@@ -55,23 +55,23 @@ export default [
       options: [
         {
           text: { type: "plain_text", text: "Extra Small", emoji: true },
-          value: "XS",
+          value: "Extra Small",
         },
         {
           text: { type: "plain_text", text: "Small", emoji: true },
-          value: "S",
+          value: "Small",
         },
         {
           text: { type: "plain_text", text: "Medium", emoji: true },
-          value: "M",
+          value: "Medium",
         },
         {
           text: { type: "plain_text", text: "Large", emoji: true },
-          value: "L",
+          value: "Large",
         },
         {
           text: { type: "plain_text", text: "Extra Large", emoji: true },
-          value: "XL",
+          value: "Extra Large",
         },
       ],
       action_id: "tee-size",
