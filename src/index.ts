@@ -129,9 +129,15 @@ app.view("register-view", async ({ ack, body, view, client }) => {
             Verified: true,
             "Dietary Restrictions":
               view.state.values["dietary-restrictions"]["dietary-restrictions"].value,
-            "Vaccinated":
+            "Workshop Interest": view.state.values["workshop"]["workshop"].selected_option.value,
+            "Stipend Request": view.state.values["stipend"]["stipend"].selected_option.value,
+            "Random Words": view.state.values["random-words"]["random-words"].value,
+            "Panipuri etc.": view.state.values["what-poori"]["what-poori"].selected_option.value,
+            Vaccinated:
               view.state.values["vaccine-status"]["vaccine-status"]?.selected_options?.[0]
-                ?.value === "vaccine-status" ? "Yes" : "No",
+                ?.value === "vaccine-status"
+                ? "Yes"
+                : "No",
           },
         },
       ],
