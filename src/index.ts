@@ -53,7 +53,7 @@ app.event("message", async ({ client, message }) => {
       console.log("Message in #epoch")
       console.log(user)
       base("Registrations")
-        .select({ filterByFormula: `{Email} = "${user.profile.email}"` })
+        .select({ filterByFormula: `AND(Verified=TRUE(), {Email} = "${user.profile.email}")` })
         .eachPage((records, fetchNextPage) => {
           console.log(records.length);
           records.forEach((record) => {
@@ -63,10 +63,16 @@ app.event("message", async ({ client, message }) => {
                 return;
               }
               console.log(record.get("Verified"));
+              await client.reactions.add({
+                name: 'wave',
+                timestamp: message.ts,
+                channel: message.channel
+              })
             });
           });
           fetchNextPage();
         });
+     
     } catch (err) {
       console.error(err);
     }
