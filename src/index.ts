@@ -63,7 +63,7 @@ app.event("message", async ({ client, message }) => {
                 return;
               }
               console.log(record.get("Verified"));
-              await client.reactions.add({
+              client.reactions.add({
                 name: 'wave',
                 timestamp: message.ts,
                 channel: message.channel
