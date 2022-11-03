@@ -50,6 +50,8 @@ app.event("message", async ({ client, message }) => {
   } else if (message.channel === "C044SRZR8MB") {
     try {
       const { user } = await client.users.info({ user: (message as any).user });
+      console.log("Message in #epoch")
+      console.log(user)
       base("Registrations")
         .select({ filterByFormula: `{Email} = "${user.profile.email}"` })
         .eachPage((records, fetchNextPage) => {
