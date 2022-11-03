@@ -53,7 +53,7 @@ app.event("message", async ({ client, message }) => {
       console.log("Message in #epoch")
       console.log(user)
       base("Registrations")
-        .select({ filterByFormula: `AND(Verified=TRUE(), {Email} = "${user.profile.email}")` })
+        .select({ filterByFormula: `AND(Verified=FALSE(), {Email} = "${user.profile.email}")` })
         .eachPage((records, fetchNextPage) => {
           console.log(records.length);
           records.forEach((record) => {
