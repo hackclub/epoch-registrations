@@ -62,12 +62,6 @@ app.event("message", async ({ client, message }) => {
                 console.error(err);
                 return;
               }
-              console.log(record.get("Verified"));
-              client.reactions.add({
-                name: 'wave',
-                timestamp: message.ts,
-                channel: message.channel
-              })
             });
           });
           fetchNextPage();
