@@ -15,39 +15,40 @@ const app = new App({
 var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base("appkI9bYnFceQwtx4");
 
 app.event("message", async ({ client, message }) => {
-  if (
-    (message as any).text?.toLowerCase().includes("register") &&
-    message.channel === "C0459UZNCDV"
-  ) {
-    await client.chat.postMessage({
-      thread_ts: message.ts,
-      channel: message.channel,
-      text: "Howdy! Begin the registration process 👇",
-      blocks: [
-        {
-          type: "section",
-          text: {
-            type: "mrkdwn",
-            text: "Howdy! Begin the registration process 👇",
-          },
-        },
-        {
-          type: "actions",
-          elements: [
-            {
-              type: "button",
-              text: {
-                type: "plain_text",
-                text: "Register",
-                emoji: true,
-              },
-              action_id: "register-intent",
-            },
-          ],
-        },
-      ],
-    });
-  } else if (message.channel === "C044SRZR8MB") {
+  // if (
+  //   (message as any).text?.toLowerCase().includes("register") &&
+  //   message.channel === "C0459UZNCDV"
+  // ) {
+  //   await client.chat.postMessage({
+  //     thread_ts: message.ts,
+  //     channel: message.channel,
+  //     text: "Howdy! Begin the registration process 👇",
+  //     blocks: [
+  //       {
+  //         type: "section",
+  //         text: {
+  //           type: "mrkdwn",
+  //           text: "Howdy! Begin the registration process 👇",
+  //         },
+  //       },
+  //       {
+  //         type: "actions",
+  //         elements: [
+  //           {
+  //             type: "button",
+  //             text: {
+  //               type: "plain_text",
+  //               text: "Register",
+  //               emoji: true,
+  //             },
+  //             action_id: "register-intent",
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   });
+  // } else 
+  if (message.channel === "C044SRZR8MB") {
     try {
       const { user } = await client.users.info({ user: (message as any).user });
       console.log("Message in #epoch")
