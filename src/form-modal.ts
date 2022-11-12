@@ -108,10 +108,10 @@ export default [
         {
           text: {
             type: "plain_text",
-            text: "Advanced: I'm comfortable with my skill set and can work on a big projects",
+            text: "Advanced: I'm comfortable with my skill set and can work on a project without much guidance",
             emoji: true,
           },
-          value: "Advanced: I'm comfortable with my skill set and can work on a big projects",
+          value: "Advanced: I'm comfortable with my skill set and can work on a project without much guidance",
         },
       ],
       action_id: "skill",
