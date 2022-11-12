@@ -95,7 +95,7 @@ export default [
             text: "Beginner: have never coded before or just started learning",
             emoji: true,
           },
-          value: "beginner",
+          value: "Beginner: have never coded before or just started learning",
         },
         {
           text: {
@@ -103,7 +103,7 @@ export default [
             text: "Intermediate: have taken CS classes OR worked on small individual projects",
             emoji: true,
           },
-          value: "intermediate",
+          value: "Intermediate: have taken CS classes OR worked on small individual projects",
         },
         {
           text: {
@@ -111,7 +111,7 @@ export default [
             text: "Advanced: I'm comfortable with my skill set and can work on a big projects",
             emoji: true,
           },
-          value: "advanced",
+          value: "Advanced: I'm comfortable with my skill set and can work on a big projects",
         },
       ],
       action_id: "skill",
