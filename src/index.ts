@@ -47,12 +47,12 @@ app.event("message", async ({ client, message }) => {
   //       },
   //     ],
   //   });
-  // } else 
+  // } else
   if (message.channel === "C044SRZR8MB") {
     try {
       const { user } = await client.users.info({ user: (message as any).user });
-      console.log("Message in #epoch")
-      console.log(user)
+      console.log("Message in #epoch");
+      console.log(user);
       base("Registrations")
         .select({ filterByFormula: `AND(Verified=FALSE(), {Email} = "${user.profile.email}")` })
         .eachPage((records, fetchNextPage) => {
@@ -67,11 +67,24 @@ app.event("message", async ({ client, message }) => {
           });
           fetchNextPage();
         });
-     
     } catch (err) {
       console.error(err);
     }
   }
+});
+
+app.event("member_joined_channel", async ({ event }) => {
+  await app.client.chat.postEphemeral({
+    user: event.user,
+    channel: event.channel,
+    text: `:hyper-dino-wave: Hey <@${event.user}>! Make sure to introduce yourself when joining! As you introduce yourselves here are some great things to include:
+- What you're hacking on at the moment
+- Where you come from
+- An interesting fact about yourself
+- A hobby of yours
+Thanks :D! Super excited to have you here! :sparkles:
+`,
+  });
 });
 
 app.action("register-intent", async ({ ack, client, body }) => {
